@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  div#rooms-wrapper
+    table#rooms.color1
+    button.butt.primary#new(type="button") New
+  script.
+    $(function() {
+      $s.on('updateGames', function(games) {
+        $('#rooms').html('');
+        games.forEach(function(game) {
+          var room = $('<tr class="room" data-id="' + game.id +'">');
+          var players = $('<td class="players">');
+          room.append(players);
+          room.append($('<td class="join"><button class="join butt" type="button">Join</button></td>'));
+          game.players.forEach(function(player) {
+            var el = $('<div class="player">');
+            el.html(player.nick);
+            players.append(el);
+          });
+          $('#rooms').append(room);
+        });
+      });
+      $s.emit('getGames');
+
+      $(document).on('click', '#rooms .join', function() {
+        var el = $(this)
+        if(!el.is('#rooms .room')) el = el.parents('#rooms .room');
+        location.href = 'play-' + el.attr('data-id');
+      });
+
+      $('#new').click(function() {
+        location.href = 'play';
+      });
+    });

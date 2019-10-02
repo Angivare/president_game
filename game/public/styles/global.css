@@ -1,0 +1,202 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+
+  background: url('/resources/wood.png');
+  color: #eee;
+} html {
+  height: 100%;
+  box-sizing: border-box;
+
+  font-family: helvetica, arial, sans-serif;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.color1 {
+  background-color: #3e6589;
+  color: #eee;
+}
+
+.butt {
+  background: #133b5e;
+  color: #eee;
+  border: 1px solid #264f75;
+  padding: 6px;
+  margin: 6px;
+  text-decoration: none;
+  cursor: pointer;
+} .butt:hover {
+  background: #3e6589;
+}
+.butt.primary {
+  padding: 12px;
+  margin: 12px;
+  background: #d47d56;
+  border-color: #662000;
+  color: #000;
+} .butt.primary:hover {
+  background: #fdb392;
+}
+
+
+.text {
+}
+/* /login */
+form#login {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 12px;
+} form#login .nick {
+  padding: 12px 6px;
+  background: #fff;
+  border: 1px solid #662000;
+  margin: 12px;
+}
+
+/* /rooms */
+#rooms-wrapper {
+  text-align: center;
+} #rooms {
+  margin: 0 auto;
+  padding: 12px;
+  min-width: 60%;
+  max-width: 720px;
+  text-align: left;
+  border-collapse: collapse;
+
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+} table#rooms tr {
+  vertical-align: middle;
+  border-top: 1px solid black;
+} table#rooms tr:last-of-type {
+  border-bottom: 1px solid black;
+} #rooms td.players {
+  margin: 6px;
+  padding: 6px;
+} #rooms td.join {
+  width: 1px;
+}
+
+/* /play */
+.card {
+  height: 8.85em;
+  width: 6.4em;
+  background: #fff url('../resources/cards.png') no-repeat;
+  background-size: 1300% 400%;
+  border: 1px solid #695d39;
+  border-radius: .5em;
+  box-shadow: 0 0 .5em -.15em #000;
+  font-family: 'Times', serif;
+  text-align: left;
+  line-height: 1em;
+  padding-top: .25em;
+  padding-left: .1em;
+  letter-spacing: -.2em;
+
+  margin: .5em;
+
+  display: inline-block;
+}
+
+.clubs, .spades { color: #000; }
+.diams, .hearts { color: #890000; }
+
+.ui-element {
+  position: absolute;
+  padding: 12px;
+  overflow: auto;
+} .ui-element.left {
+  left: 0;
+  right: 40%;
+} .ui-element.right {
+  left: 60%;
+  right: 0;
+} .ui-element.top {
+  top: 0;
+  bottom: 20%;
+} .ui-element.bottom {
+  top: 80%;
+}
+
+#table .card-group, #player-hand .card {
+  font-size: .80em;
+}
+
+#table {
+  overflow: hidden;
+} #table .card-group {
+  border: 1px solid black;
+  margin: 3px 0;
+  min-height: 10em;
+} #table .card-sub-group {
+  position: relative;
+  min-height: 10em;
+  min-width: 11em;
+  display: inline-block;
+
+  /* border-right: 1px dotted black; */
+} #table .card-sub-group:last-of-type {
+  border-right: 0;
+} #table .card-sub-group.empty {
+  background: rgba(255, 255, 255, 0.2);
+} #table .card {
+  position: absolute;
+}
+#table .card:nth-of-type(1) { left: 0; }
+#table .card:nth-of-type(2) { left: 1em; }
+#table .card:nth-of-type(3) { left: 2em; }
+#table .card:nth-of-type(4) { left: 3em; }
+
+#player-hand{
+  overflow: hidden;
+  padding-left: 3em;
+} #player-hand .card {
+  cursor: pointer;
+  margin-left: -3em;
+} #player-hand .card:hover {
+  background-color: #eee;
+} #player-hand .card.checked {
+  background-color: #bbb;
+} #player-hand .card.playable {
+  border-color: #698d39;
+  box-shadow: 0 0 .5em -.15em #030;
+}
+
+#chat #messages {
+  height: calc(100% - 2em);
+  overflow: auto;
+
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.2);
+} #chat input {
+  width: 100%;
+  height: 2em;
+}
+
+#players {
+  border-collapse: collapse;
+} #players td {
+  padding: 1px 3px;
+}
+
+.player.current .curr-score {
+  padding-right: 3px;
+} .player .prev-score.special-0:before {
+  content: " president";
+} .player .prev-score.special-1:before {
+  content: " vice-president";
+} .player .prev-score.special-2:before {
+  content: " vice-scum";
+} .player .prev-score.special-3:before {
+  content: " scum";
+} .player.folded {
+  background: #222;
+}

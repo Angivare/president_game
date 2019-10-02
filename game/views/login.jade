@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form#login.color1
+    input.nick(type="text", placerholder="Nickname", maxlength="15")
+    input.submit.butt.primary(type="submit", value="Login")
+  script.
+    $(function() {
+      $('form').submit(function(ev) {
+        $s.emit('init', null, $('.nick').val());
+        ev.preventDefault();
+      });
+    });
+    $skipAutoInit = true;
+    $uidCallback = function(uid) {
+      document.cookie = 'uid=' + uid + '; path=/';
+      location.href = '/rooms';
+    }

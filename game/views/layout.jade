@@ -1,0 +1,18 @@
+doctype html
+meta(charset="utf-8")
+link(rel="stylesheet" href="styles/global.css")
+link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+script(src="scripts/jquery.js")
+script(src="https://cdn.socket.io/socket.io-1.2.0.js")
+script
+  | var $s = io(),
+  |     $skipAutoInit = false;
+block content
+script.
+  $s.on('uid', function(uid) {
+    localStorage.setItem('uid', uid);
+    if(typeof $uidCallback === 'function')
+      $uidCallback(uid);
+  });
+  if(!$skipAutoInit)
+    $s.emit('init', localStorage.getItem('uid'), localStorage.getItem('nick'));

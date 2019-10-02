@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  node:
+    environment:
+      LOGSTASH_URL: logstash:5000
+    build:
+      context: ./game
+    ports:
+      - 3000:3000
+
+    networks:
+      - vnet
+
+  logstash:
+    build:
+      context: ./logstash
+    hostname: logstash
+
+    networks:
+      - vnet
+
+  elasticsearch:
+    image: elasticsearch:7.3.2
+    hostname: elasticsearch
+
+    environment:
+      discovery.type: single-node
+
+    networks:
+      - vnet
+
+  kibana:
+    image: kibana:7.3.2
+    hostname: kibana
+    ports:
+      - 3100:5601
+
+    networks:
+      - vnet
+
+  net-dbg:
+    image: ubuntu
+    networks:
+      - vnet
+
+    stdin_open: true
+    tty: true
+
+networks:
+  vnet:
+

@@ -1,0 +1,13 @@
+extends layout.jade
+
+block content
+  div#table.ui-element.top.left
+  div#chat.ui-element.top.right
+    div#messages
+    input.no-space-event(type="text")
+  div#player-hand.ui-element.bottom.left
+  table#players.ui-element.bottom.right
+  script
+    | $gid = #{gid};
+    | $nick = '#{nick}';
+  script(src="scripts/play.js")
